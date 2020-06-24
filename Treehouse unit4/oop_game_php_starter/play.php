@@ -24,12 +24,10 @@
 
   if(isset($_POST['key'])){
     if(empty($_SESSION['selected'])){
-//      $_SESSION['selected'] = array();
-//    }
-//      
-      $_SESSION['selected'] = $_POST;
+     $_SESSION['selected'] = array();
+   }
     }
-//    array_push($_SESSION['selected'],$_POST['key']);
+   array_push($_SESSION['selected'],$_POST['key']);
     //$_SESSION['selected'][] = $_POST['key'];
 
   }
