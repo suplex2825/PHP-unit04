@@ -14,42 +14,42 @@ class Game
   {
      $keyboard = "
       <form action='play.php' method='post'>
-     <div id='qwerty' class='section'>
-    <div class='keyrow'>
-        <input class='key' type='submit' name='key' value='q' />
-        <input class='key' type='submit' name='key' value='w' />
-        <input class='key' type='submit' name='key' value='e' />
-        <input class='key' type='submit' name='key' value='r' />
-        <input class='key' style='background-color: red' disabled type='submit' name='key' value='t' />
-        <input class='key' type='submit' name='key' value='y' />
-        <input class='key' type='submit' name='key' value='u' />
-        <input class='key' type='submit' name='key' value='i' />
-        <input class='key' type='submit' name='key' value='o' />
-        <input class='key' type='submit' name='key' value='p' />
-    </div>
+     <div id='qwerty' class='section'>";
+     $keyboard.= "<div class='keyrow'>";
+     $keyboard.= $this->lettersMatch('q');
+     $keyboard.= $this->lettersMatch('w');
+    $keyboard.= $this->lettersMatch('e');
+    $keyboard.= $this->lettersMatch('r');
+    $keyboard.= $this->lettersMatch('t');
+    $keyboard.= $this->lettersMatch('y');
+    $keyboard.= $this->lettersMatch('u');
+    $keyboard.= $this->lettersMatch('i');
+    $keyboard.= $this->lettersMatch('o');
+    $keyboard.= $this->lettersMatch('p');
+    $keyborad.="</div>";
 
-    <div class='keyrow'>
-        <input class='key' type='submit' name='key' value='a' />
-        <input class='key' type='submit' name='key' value='s' />
-        <input class='key' type='submit' name='key' value='d' />
-        <input class='key' type='submit' name='key' value='f' />
-        <input class='key' type='submit' name='key' value='g' />
-        <input class='key' type='submit' name='key' value='h' />
-        <input class='key' type='submit' name='key' value='j' />
-        <input class='key' type='submit' name='key' value='k' />
-        <input class='key' type='submit' name='key' value='l' />
-    </div>
+    $keyboard.="<div class='keyrow'>";
+    $keyboard.= $this->lettersMatch('a');
+    $keyboard.= $this->lettersMatch('s');
+    $keyboard.= $this->lettersMatch('d');
+    $keyboard.= $this->lettersMatch('f');
+    $keyboard.= $this->lettersMatch('g');
+    $keyboard.= $this->lettersMatch('h');
+    $keyboard.= $this->lettersMatch('j');
+    $keyboard.= $this->lettersMatch('k');
+    $keyboard.= $this->lettersMatch('l');
+    $keyboard.="</div>";
 
-    <div class='keyrow'>
-        <input class='key' type='submit' name='key' value='z' />
-        <input class='key' type='submit' name='key' value='x' />
-        <input class='key' type='submit' name='key' value='c' />
-        <input class='key' type='submit' name='key' value='v' />
-        <input class='key' type='submit' name='key' value='b' />
-        <input class='key' type='submit' name='key' value='n' />
-        <input class='key' type='submit' name='key' value='m' />
-    </div>
-</div>
+    $keyboard.= "<div class='keyrow'>";
+    $keyboard.= $this->lettersMatch('z');
+    $keyboard.= $this->lettersMatch('x');
+    $keyboard.= $this->lettersMatch('c');
+    $keyboard.= $this->lettersMatch('v');
+    $keyboard.= $this->lettersMatch('b');
+    $keyboard.= $this->lettersMatch('n');
+    $keyboard.= $this->lettersMatch('m');
+    $keyboard.="</div>";
+ $keyboard.="</div>
 </form>";
     
     return $keyboard;
