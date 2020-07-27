@@ -70,6 +70,21 @@ class Game
     
     return $scores;
   }
+  
+  
+  public function lettersMatch($words)
+  {
+    $words_selected = $this->phrase->selected[0];
+    if(!in_array($words,$words_selected)){
+       return "<input class='key' type='submit' name='key' value='$words' />";
+    } else {
+       if($this->phrase->checkLetter($words)) {
+         return "<input class='key correct' type='submit' name='key' value='$words' />";
+       } else {
+         return "<input class='key incorrect' type='submit' name='key' value='$words' />";
+       }
+    }
+  }
 }
 
 

@@ -24,11 +24,13 @@
 
   if(isset($_POST['key'])){
     if(empty($_SESSION['selected'])){
-     $_SESSION['selected'] = array();
-   }
+      $_SESSION['selected'] = array();
+//    }
+//     
+//      $_SESSION['selected'][] = $_POST['key'];
+//      $_SESSION['selected'] = $_POST;
     }
-   array_push($_SESSION['selected'],$_POST['key']);
-    //$_SESSION['selected'][] = $_POST['key'];
+    array_push($_SESSION['selected'],$_POST['key']);
 
   }
 
@@ -38,6 +40,7 @@
   $game = new Game($phrase);
 //  var_dump($_SESSION['selected']);
   var_dump($game);
+  var_dump($phrase->checkLetter('a'));
 //  echo "<pre>";
 //  var_dump($phrase);
 //  var_dump($game);

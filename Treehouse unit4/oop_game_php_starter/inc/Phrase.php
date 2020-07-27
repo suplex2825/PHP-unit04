@@ -39,6 +39,18 @@ class Phrase
       </div>";
       return $splitwords;
     }
+  
+  
+    public function checkLetter($singlewords)
+    {
+       $result_words = array_unique(str_split(str_replace(' ','',strtolower($this->currentPhrase))));
+       if(in_array($singlewords,$result_words)) {
+         return true;
+       } else {
+         return false;
+       }
+    }
+      
 }
 
 
