@@ -22,6 +22,13 @@
 // var_dump($_SESSION);
 //echo '<br>';
 
+  if(isset($_POST['start'])) {
+    if(!empty($_SESSION['phrase']) && !empty($_SESSION['selected'])) {
+      unset($_SESSION['phrase']);
+      unset($_SESSION['selected']);
+    }
+  }
+
   if(isset($_POST['key'])){
     if(empty($_SESSION['selected'])){
       $_SESSION['selected'] = array();
@@ -35,6 +42,7 @@
   }
 
   $_SESSION['phrase'] = 'start small';
+
 
   $phrase = new Phrase($_SESSION['phrase'],$_SESSION['selected']);
   $game = new Game($phrase);

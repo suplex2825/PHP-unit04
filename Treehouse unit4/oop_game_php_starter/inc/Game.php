@@ -1,8 +1,8 @@
 <?php 
 class Game 
 {
-  private $phrase;
-  private $lives = 5;
+  public $phrase;
+  public $lives = 5;
 
   public function __construct($phrase)
   {
@@ -26,7 +26,7 @@ class Game
     $keyboard.= $this->lettersMatch('i');
     $keyboard.= $this->lettersMatch('o');
     $keyboard.= $this->lettersMatch('p');
-    $keyborad.="</div>";
+    $keyboard.="</div>";
 
     $keyboard.="<div class='keyrow'>";
     $keyboard.= $this->lettersMatch('a');

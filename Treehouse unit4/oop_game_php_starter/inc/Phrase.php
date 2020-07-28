@@ -1,8 +1,8 @@
 <?php 
 class Phrase 
 {
-   private $currentPhrase = null;
-   private $selected = array();
+   public $currentPhrase = null;
+   public $selected = array();
    
    public $phrase = null;
 
@@ -32,7 +32,11 @@ class Phrase
         if($words === " "){
           $splitwords .= "<li class='hide space'> </li>";
         } else{
+          if(in_array($words,$this->selected[0])){
+          $splitwords .="<li class='show letter'>$words</li>";
+          } else {
           $splitwords .="<li class='hide letter'>$words</li>";
+          }
         }
       }
           $splitwords .= "</ul>
