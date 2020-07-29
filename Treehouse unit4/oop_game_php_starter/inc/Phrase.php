@@ -15,8 +15,10 @@ class Phrase
    {
      if(!empty($currentPhrase)){
        $this->currentPhrase = $currentPhrase;
+     } else {
+       $this->currentPhrase = $this->phrases[array_rand($this->phrases)];
      }
-     
+      
      if(!empty($selected)){
        $this->selected[] = $selected;
      }

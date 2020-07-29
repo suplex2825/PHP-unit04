@@ -24,7 +24,7 @@
 
   if(isset($_POST['start'])) {
     if(!empty($_SESSION['phrase']) && !empty($_SESSION['selected'])) {
-      unset($_SESSION['phrase']);
+      $_SESSION['phrase'] = new Phrase();
       unset($_SESSION['selected']);
     }
   }
@@ -44,10 +44,10 @@
 //  $_SESSION['phrase'] = 'start small';
 
   $phrase = new Phrase($_SESSION['phrase'],$_SESSION['selected']);
- $_SESSION['phrase'] = $phrase->phrases[array_rand($phrase->phrases,1)];
+// $_SESSION['phrase'] = $phrase->phrases[array_rand($phrase->phrases,1)];
 
   $game = new Game($phrase);
-//  var_dump($_SESSION['selected']);
+  var_dump($_SESSION['selected']);
   var_dump($game);
   var_dump($phrase->checkLetter('a'));
 //  echo "<pre>";
