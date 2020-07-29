@@ -4,7 +4,12 @@ class Phrase
    public $currentPhrase = null;
    public $selected = array();
    
-   public $phrase = null;
+   public $phrases = array("Always turn a negative situation into a positive situation",
+                          "With the new day comes new strength and new thoughts",
+                          "The best and most beautiful things in the world cannot be seen or even touched they must be felt with the heart",
+                          "If I have seen further than others it is by standing upon the shoulders of giants",
+                          "There is nothing impossible to him who will try",
+                          "Try to be a rainbow in someone s cloud");
 
    public function __construct($currentPhrase = null, $selected = null)
    {
@@ -25,7 +30,7 @@ class Phrase
   
     public function addPhraseToDisplay()
     {
-      $characters = str_split(strtolower($this->phrase));
+      $characters = str_split(strtolower($this->currentPhrase));
       $splitwords = "<div id='phrase' class='section'>
     <ul>";
       foreach($characters as $words){

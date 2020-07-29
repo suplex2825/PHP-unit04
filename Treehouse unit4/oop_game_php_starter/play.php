@@ -41,10 +41,11 @@
 
   }
 
-  $_SESSION['phrase'] = 'start small';
-
+//  $_SESSION['phrase'] = 'start small';
 
   $phrase = new Phrase($_SESSION['phrase'],$_SESSION['selected']);
+ $_SESSION['phrase'] = $phrase->phrases[array_rand($phrase->phrases,1)];
+
   $game = new Game($phrase);
 //  var_dump($_SESSION['selected']);
   var_dump($game);
