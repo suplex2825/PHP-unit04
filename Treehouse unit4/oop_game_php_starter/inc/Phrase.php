@@ -20,7 +20,9 @@ class Phrase
      }
       
      if(!empty($selected)){
-       $this->selected[] = $selected;
+       $this->selected = $selected;
+     } else {
+       $this->selected = [];
      }
      
      if(!isset($phrase)){
