@@ -13,18 +13,16 @@ class Phrase
 
    public function __construct($currentPhrase = null, $selected = null)
    {
-     if(!empty($currentPhrase)){
-       $this->currentPhrase = $currentPhrase;
+     if($currentPhrase == null) {
+      shuffle($this->phrases);
+      $this->currentPhrase = $this->phrases[0];
      } else {
-       $this->currentPhrase = $this->phrases[array_rand($this->phrases)];
+      $this->currentPhrase = $currentPhrase;
      }
       
      if(!empty($selected)){
-       $this->selected = $selected;
-     } else {
-       $this->selected = [];
+       $this->selected[] = $selected;
      }
-     
      if(!isset($phrase)){
          $this->phrase = "dream big";
      }
@@ -63,7 +61,16 @@ class Phrase
          return false;
        }
     }
-      
+
+
+
+    public function numberLost()
+    {
+      $getLetterArray = array_unique(str_split(str_replace(' ','',strtolower($this->currentPhrase))));
+      $results = array_diff($this->selected[0], $getLetterArray);
+      return count($results);
+    }
+    
 }
 
 

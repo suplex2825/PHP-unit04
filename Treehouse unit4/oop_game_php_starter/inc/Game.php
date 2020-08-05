@@ -85,6 +85,34 @@ class Game
        }
     }
   }
+
+
+  public function checkForLose()
+  {
+    $html = $this->displayScore();
+    $doc = new DOMDocument();
+    $doc->loadHTML($html);
+    $heartsNumber = $doc->getElementsByTagName('li')->length;
+    if($this->phrase->numberLost() === $heartsNumber) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+  public function gameOver()
+  {
+    if($this->checkForLose()) {
+      $words = $this->phrase->currentPhrase;
+      $finalWords = "<h1 id='game-over-message'>The phrase was";
+      $finalWords.= '"'. $words . '"';
+      $finalWords.="Better luck next time!</h1>";
+      return $finalWords;
+    } else {
+      return false;
+    }
+  }
 }
 
 

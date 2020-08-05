@@ -27,8 +27,7 @@
       unset($_SESSION['phrase']);
       unset($_SESSION['selected']);
     }
-    $_SESSION['phrase'] = new Phrase();
-  }
+  } 
 
   if(isset($_POST['key'])){
     if(empty($_SESSION['selected'])){
@@ -44,10 +43,14 @@
 
 //  $_SESSION['phrase'] = 'start small';
 
-  $phrase = $_SESSION['phrase'];
+  $phrase = new Phrase($_SESSION['phrase'],$_SESSION['selected']);
 // $_SESSION['phrase'] = $phrase->phrases[array_rand($phrase->phrases,1)];
+  if(!isset($_SESSION['phrase'])) {
+    $_SESSION['phrase'] = $phrase->currentPhrase;
+  }
 
   $game = new Game($phrase);
+  // var_dump($_SESSION['selected']);
   var_dump($_SESSION['selected']);
   var_dump($game);
   var_dump($phrase->checkLetter('a'));
@@ -55,10 +58,15 @@
 //  var_dump($phrase);
 //  var_dump($game);
 //  echo "</pre>";
+  echo $phrase->numberLost();
+  echo "<br>";
+  var_dump($game->checkForLose());
   ?>  
 <div class="main-container">
     <div id="banner" class="section">
         <h2 class="header">Phrase Hunter</h2>
+        <?php echo $game->gameOver();?>
+
         <?php echo $phrase->addPhraseToDisplay();?>
       
         <?php echo $game->displayKeyboard();?>
@@ -71,3 +79,5 @@
 
 </body>
 </html>
+
+
