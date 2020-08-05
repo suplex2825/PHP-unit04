@@ -21,7 +21,7 @@ class Phrase
      }
       
      if(!empty($selected)){
-       $this->selected[] = $selected;
+       $this->selected = $selected;
      }
      if(!isset($phrase)){
          $this->phrase = "dream big";
@@ -39,7 +39,7 @@ class Phrase
         if($words === " "){
           $splitwords .= "<li class='hide space'> </li>";
         } else{
-          if(in_array($words,$this->selected[0])){
+          if(in_array($words,$this->selected)){
           $splitwords .="<li class='show letter'>$words</li>";
           } else {
           $splitwords .="<li class='hide letter'>$words</li>";
@@ -67,7 +67,7 @@ class Phrase
     public function numberLost()
     {
       $getLetterArray = array_unique(str_split(str_replace(' ','',strtolower($this->currentPhrase))));
-      $results = array_diff($this->selected[0], $getLetterArray);
+      $results = array_diff($this->selected, $getLetterArray);
       return count($results);
     }
     

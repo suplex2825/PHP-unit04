@@ -74,7 +74,7 @@ class Game
   
   public function lettersMatch($words)
   {
-    $words_selected = $this->phrase->selected[0];
+    $words_selected = $this->phrase->selected;
     if(!in_array($words,$words_selected)){
        return "<input class='key' type='submit' name='key' value='$words' />";
     } else {
@@ -118,7 +118,7 @@ class Game
   public function checkForWin()
   {
     $getLetterArray = array_unique(str_split(str_replace(' ','',strtolower($this->currentPhrase))));
-    $winnerResult = array_intersect($this->phrase->selected[0], $getLetterArray);
+    $winnerResult = array_intersect($this->phrase->selected, $getLetterArray);
     if(count($getLetterArray) === count($winnerResult)) {
       return true;
     } else {
