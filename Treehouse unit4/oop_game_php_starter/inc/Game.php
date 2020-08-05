@@ -113,6 +113,18 @@ class Game
       return false;
     }
   }
+
+
+  public function checkForWin()
+  {
+    $getLetterArray = array_unique(str_split(str_replace(' ','',strtolower($this->currentPhrase))));
+    $winnerResult = array_intersect($this->phrase->selected[0], $getLetterArray);
+    if(count($getLetterArray) === count($winnerResult)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 

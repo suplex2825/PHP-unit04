@@ -61,12 +61,11 @@
   echo $phrase->numberLost();
   echo "<br>";
   var_dump($game->checkForLose());
+  var_dump($game->checkForWin());
   ?>  
 <div class="main-container">
     <div id="banner" class="section">
         <h2 class="header">Phrase Hunter</h2>
-        <?php echo $game->gameOver();?>
-
         <?php echo $phrase->addPhraseToDisplay();?>
       
         <?php echo $game->displayKeyboard();?>
@@ -74,6 +73,8 @@
         <?php echo $game->displayScore();
           var_dump($_POST);
          ?>
+
+        <?php echo $game->gameOver();?>
     </div>
 </div>
 
