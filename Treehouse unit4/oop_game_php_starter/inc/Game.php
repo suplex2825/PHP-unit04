@@ -62,10 +62,9 @@ class Game
     <ol>";
     
     for($i = 1; $i < 6; $i++){
-     $scores.= "<li class='tries'><img src='images/liveHeart.png' height='35px' widght='30px'></li>";
+      $scores.= "<li class='tries'><img src='images/".$this->checkTheLive().".png' height='35px' widght='30px'></li>";
     }
-    
-    $scores .= "    </ol>
+    $scores .= "</ol>
 </div>";
     
     return $scores;
@@ -117,12 +116,26 @@ class Game
 
   public function checkForWin()
   {
-    $getLetterArray = array_unique(str_split(str_replace(' ','',strtolower($this->currentPhrase))));
+    $getLetterArray = array_unique(str_split(str_replace(' ','',strtolower($this->phrase->currentPhrase))));
     $winnerResult = array_intersect($this->phrase->selected, $getLetterArray);
     if(count($getLetterArray) === count($winnerResult)) {
-      return true;
+      $words = $this->phrase->currentPhrase;
+      $finalWords = "<h1 id='game-over-message'>Congratulations on guessing:";
+      $finalWords.= '"'. $words . '"';
+      $finalWords.="</h1>";
+      return $finalWords;
     } else {
       return false;
+    }
+  }
+
+
+  public function checkTheLive()
+  {
+    if($this->checkForLose()) {
+      return "lostHeart";
+    } else {
+      return "liveHeart";
     }
   }
 }

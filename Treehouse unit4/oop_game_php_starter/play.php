@@ -60,7 +60,7 @@
 //  echo "</pre>";
   echo $phrase->numberLost();
   echo "<br>";
-  var_dump($game->checkForLose());
+  // var_dump($game->checkForLose());
   var_dump($game->checkForWin());
   ?>  
 <div class="main-container">
