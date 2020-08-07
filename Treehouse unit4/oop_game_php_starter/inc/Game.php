@@ -2,7 +2,7 @@
 class Game 
 {
   public $phrase;
-  public $lives = 5;
+  public $lives = 4;
 
   public function __construct($phrase)
   {
@@ -61,9 +61,14 @@ class Game
     $scores = "<div id='scoreboard' class='section'>
     <ol>";
     
-    for($i = 1; $i < 6; $i++){
-      $scores.= "<li class='tries'><img src='images/".$this->checkTheLive().".png' height='35px' widght='30px'></li>";
+    for($i = 1; $i <= $this->phrase->numberLost(); $i++){
+      $scores.= "<li class='tries'><img src='images/lostHeart.png' height='35px' widght='30px'></li>";
+    } 
+    
+    for ($i=0; $i <= ($this->lives - $this->phrase->numberLost()) ; $i++) { 
+      $scores.= "<li class='tries'><img src='images/liveHeart.png' height='35px' widght='30px'></li>";
     }
+
     $scores .= "</ol>
 </div>";
     
@@ -104,12 +109,28 @@ class Game
   {
     if($this->checkForLose()) {
       $words = $this->phrase->currentPhrase;
-      $finalWords = "<h1 id='game-over-message'>The phrase was";
+      $finalWords ="<div id='overlay' class='lose'>";
+      $finalWords.="<h2>Phrase Hunter</h2>"; 
+      $finalWords.= "<h1 id='game-over-message'>The phrase was";
       $finalWords.= '"'. $words . '"';
       $finalWords.="Better luck next time!</h1>";
+      $finalWords.="<form action='play.php' method='post'>";
+      $finalWords.="<input id='btn__reset' type='submit' name='start' value='Start Game' />";
+      $finalWords.="</form>";
       return $finalWords;
+    } else if($this->checkForWin())  {
+      $words = $this->phrase->currentPhrase;
+      $finalWords2 ="<div id='overlay' class='win'>";
+      $finalWords2.="<h2>Phrase Hunter</h2>"; 
+      $finalWords2.= "<h1 id='game-over-message'>Congratulations on guessing: ";
+      $finalWords2.= '"'. $words . '"';
+      $finalWords2.="</h1>";
+      $finalWords2.="<form action='play.php' method='post'>";
+      $finalWords2.="<input id='btn__reset' type='submit' name='start' value='Start Game' />";
+      $finalWords2.="</form>";
+      return $finalWords2;
     } else {
-      return false;
+       return false;
     }
   }
 
@@ -119,25 +140,17 @@ class Game
     $getLetterArray = array_unique(str_split(str_replace(' ','',strtolower($this->phrase->currentPhrase))));
     $winnerResult = array_intersect($this->phrase->selected, $getLetterArray);
     if(count($getLetterArray) === count($winnerResult)) {
-      $words = $this->phrase->currentPhrase;
-      $finalWords = "<h1 id='game-over-message'>Congratulations on guessing:";
-      $finalWords.= '"'. $words . '"';
-      $finalWords.="</h1>";
-      return $finalWords;
+      return true;
     } else {
       return false;
     }
   }
-
-
-  public function checkTheLive()
+  
+  public function checkForLive()
   {
-    if($this->checkForLose()) {
-      return "lostHeart";
-    } else {
-      return "liveHeart";
-    }
+    
   }
+
 }
 
 

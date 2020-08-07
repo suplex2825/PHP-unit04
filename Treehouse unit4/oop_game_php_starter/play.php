@@ -51,17 +51,17 @@
 
   $game = new Game($phrase);
   // var_dump($_SESSION['selected']);
-  var_dump($_SESSION['selected']);
-  var_dump($game);
-  var_dump($phrase->checkLetter('a'));
+  // var_dump($_SESSION['selected']);
+  // var_dump($game);
+  // var_dump($phrase->checkLetter('a'));
 //  echo "<pre>";
 //  var_dump($phrase);
 //  var_dump($game);
 //  echo "</pre>";
-  echo $phrase->numberLost();
-  echo "<br>";
+  // echo $phrase->numberLost();
+  // echo "<br>";
   // var_dump($game->checkForLose());
-  var_dump($game->checkForWin());
+  // var_dump($game->checkForWin());
   ?>  
 <div class="main-container">
     <div id="banner" class="section">
@@ -71,7 +71,7 @@
         <?php echo $game->displayKeyboard();?>
       
         <?php echo $game->displayScore();
-          var_dump($_POST);
+          // var_dump($_POST);
          ?>
 
         <?php echo $game->gameOver();?>
